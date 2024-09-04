@@ -212,7 +212,7 @@ struct GammaJetTreeProducer {
   // an integer instead
   Filter clusterDefinitionSelection = (o2::aod::jcluster::definition == mClusterDefinition);
   // Process clusters
-  void processClusters(soa::Join<JetCollisions,aod::BkgChargedRhos, aod::JCollisionBCs>::iterator const& collision, aod::JBCs const&, selectedClusters const& clusters, JetTracks const& tracks)
+  void processClusters(soa::Join<JetCollisions, aod::BkgChargedRhos, aod::JCollisionBCs>::iterator const& collision, aod::JBCs const&, selectedClusters const& clusters, JetTracks const& tracks)
   {
     if (!isEventAccepted(collision)) {
       return;
@@ -297,6 +297,6 @@ struct GammaJetTreeProducer {
 WorkflowSpec defineDataProcessing(ConfigContext const& cfgc)
 {
   WorkflowSpec workflow{
-    adaptAnalysisTask<GammaJetTreeProducer>(cfgc, TaskName{"gamma-jet-tree-producer"}, SetDefaultProcesses{{{"processClearMaps",true},{"processClusters", true}, {"processChargedJets", true}}})};
+    adaptAnalysisTask<GammaJetTreeProducer>(cfgc, TaskName{"gamma-jet-tree-producer"}, SetDefaultProcesses{{{"processClearMaps", true}, {"processClusters", true}, {"processChargedJets", true}}})};
   return workflow;
 }
