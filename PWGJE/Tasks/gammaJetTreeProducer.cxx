@@ -1009,14 +1009,12 @@ struct GammaJetTreeProducer {
       LOG(debug) << "Cluster is a merged pi0";
       // if this is a merged pion decay, it should return the MC index of the pi0 mother (it is ensured that this is properly returned otherwise we would not be in this if statement)
       returnMCIndex = getIndexMotherChain(mcParticles.iteratorAt(inducerIDs[0]), mcParticles, PDG_t::kPi0);
-
     }
     if (isMergedFromPDGDecay(cluster, mcParticles, Pdg::kEta)) {
       SETBIT(origin, static_cast<uint16_t>(gjanalysis::ClusterOrigin::kMergedEta));
       LOG(debug) << "Cluster is a merged eta";
       returnMCIndex = getIndexMotherChain(mcParticles.iteratorAt(inducerIDs[0]), mcParticles, Pdg::kEta);
     }
-
 
     // check if photon conversion
     // check that leading contribution is an electron or positron
